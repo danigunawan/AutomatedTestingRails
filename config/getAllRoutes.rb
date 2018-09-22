@@ -22,9 +22,11 @@ end
 javascriptString = ''
 allRoutes.each do |route| 
     camelCased = ''
-    camelCased += route.method
+    camelCased += route[:method]
     
-    route.route.split('/').slice(1).each do |line|
+    tempRoute = route[:route]
+
+    tempRoute.split('/').each do |line|
         cap = line[0]
         if cap == ':'
             temp = line.slice(1)
@@ -35,7 +37,10 @@ allRoutes.each do |route|
     end
 
     javascriptString += "window.#{camelCased} = function() {
-var allData = #{JSON.stringify(route)};
+var allData = {
+    method: '#{route[:method]}',
+    route: '#{route[:route]}',
+};
 var formData = new FormData();
 var paramList = document.getElementById('#{camelCased}ParamsForm') && document.getElementById('#{camelCased}ParamsForm').elements ? document.getElementById('#{camelCased}ParamsForm').elements : [];
 

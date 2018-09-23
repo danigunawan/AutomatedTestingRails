@@ -11,7 +11,7 @@ allRoutes = []
 textArray.each do |line|
     newLine = line
     newLine = newLine.split(' ')
-    method = newLine[0]
+    method = newLine[0].upcase
     routePath = newLine[1].split('')
     routePath.shift
     routePath.pop
@@ -22,7 +22,7 @@ end
 javascriptString = ''
 allRoutes.each do |route| 
     camelCased = ''
-    camelCased += route[:method]
+    camelCased += route[:method].downcase
     
     tempRoute = route[:route]
 

@@ -1,5 +1,3 @@
-<style>.flex-respond-row {display: flex !important;flex-direction: column !important;}@media (min-width: 992px) {.flex-respond-row {display: flex !important;flex-direction: row !important;}}.card-shadow {box-shadow: 0 7px 14px 0 rgba(50,50,93,.1), 0 3px 6px 0 rgba(0,0,0,.07);}.cursor-pointer{ cursor: pointer !important; }</style>
-
 <div class="header p-3 bg-dark card-shadow d-flex flex-row justify-content-between">
     <div class="d-flex flex-row">
         <a href='/' class="h-100">
@@ -30,10 +28,11 @@
                         </ul>
                     <% end %>
 
-                    <h2 class="h5">Description:</h2>
-                    <ul>
-                        <li class="h6"><% "#{data[:method]}" %></li>
-                    </ul>
+                    <h2 class="h5">Description:
+                        <ul>
+                            <li class="h6"><% "#{data[:method]}" %></li>
+                        </ul>
+                    </h2>
                     <div class="d-flex f-row w-100">
                         <h2 class="w-100 h6">'Authorization Header'</h2>
                     </div>
@@ -41,13 +40,13 @@
                         <input id="<%= "#{data[:camelCased]}AuthorizationToken" %>" type="text" class="w-100 m-1 form-control" placeholder="Enter token">
                     </div>
 
-                    <% if data['allowParams'] %>
+                    <% if data[:allowParams] %>
                         <div class="d-flex f-row w-100">
                             <h2 class="w-100 h6">Params:</h2>
                         </div>
                         <div class="d-flex f-row w-100">
                             <form id='<%= "#{data[:camelCased]}ParamsForm" %>' class="w-100">
-                                <%= data['params'].each do |param| %>
+                                <%= data[:params].each do |param| %>
                                     <div class="d-flex f-row">
                                         <input id="<%= "#{data[:camelCased]}-#{param}" %>" type="text" class="w-100 m-1 d-flex f-row form-control" value="<%= "#{param}" %>"/>
                                         <input id="<%= "#{data[:camelCased]}-#{param}-value" %>" type="text" class="w-100 m-1 form-control" placeholder="Enter value" />
@@ -60,7 +59,7 @@
                     <% end %>
                     <% if data[:allowBody] %>
                         <div class="d-flex f-row w-100">
-                            <h2 class="w-100.h6">Body:</h2>
+                            <h2 class="w-100 h6">Body:</h2>
                             <button class="<%= "#{data[:submitButtonColor]} rounded mr-2" %>" onclick="<%= "#{data[:camelCased]}NewBodyFile()" %>">Add File</button>
                             <button class="<%= "#{data[:submitButtonColor]} rounded-circle" %>" onclick="<%= "#{data[:camelCased]}NewBody()" %>">+</button>
                         </div>
@@ -100,6 +99,8 @@
                     <div class="w-100 mt-2">
                         <button class="<%= "#{data[:submitButtonColor]} w-100" %>" onclick="<%= "#{data[:camelCased]}()" %>">Submit</button>
                     </div>
+                </div>
+            </div>
             <div class="col-xs-12 col-sm-12-col-md-12 col-lg-6 col-xl-6 p-1 card-shadow p-1">
                 <div class="card-header">
                     <h2 class="h5">Sample Data</h2>

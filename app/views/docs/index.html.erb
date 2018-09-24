@@ -14,12 +14,12 @@
     <% @allRoutes.each do |data| %>
         <div class="card card-outline-secondary w-100 flex-respond-row card-shadow">
             <div class="col-xs-12 col-sm-12-col-md-12 col-lg-6 col-xl-6 p-1 card-shadow p-1">
-                <div class="card-header #{data.routeHeader}">
-                    <span class="mr-1"><%= "#{data.method}:" %></span>
-                    <span value="#{data.route}:"></span>
+                <div class="card-header #{data['routeHeader']}">
+                    <span class="mr-1" value="#{data['method']}:"></span>
+                    <span value="#{data['route']}:"></span>
                 </div>
                 <div class="card-body p-2 w-100" style="max-height: 550px; overflow: auto;">
-                    <% if data.middleware.length > 0 %>
+                    <% if data['middleware'] && data['middleware'].length > 0 %>
                         <h2 class="h5">Middleware Used:</h2>
                         <ul>
                             <% data['middleware'].each do |ware| %>
@@ -30,25 +30,25 @@
 
                     <h2 class="h5">Description:</h2>
                     <ul>
-                        <li class="h6"><%= "#{data.description}" %></li>
+                        <li class="h6" value="#{data['method']}"></li>
                     </ul>
                     <div class="d-flex f-row w-100">
                         <h2 class="w-100 h6">'Authorization Header'</h2>
                     </div>
                     <div class="d-flex f-row w-100">
-                        <input id="#{data.camelCased}AuthorizationToken" type="text" class="w-100 m-1 form-control" placeholder="Enter token">
+                        <input id="#{data['camelCased']}AuthorizationToken" type="text" class="w-100 m-1 form-control" placeholder="Enter token">
                     </div>
 
-                    <% if data.allowParams %>
+                    <% if data['allowParams'] %>
                         <div class="d-flex f-row w-100">
                             <h2 class="w-100 h6">Params:</h2>
                         </div>
                         <div class="d-flex f-row w-100">
-                            <form id="#{data.camelCased}ParamsForm" class="w-100">
-                                <% data.params.each do |param| %>
+                            <form id="#{data['camelCased']}ParamsForm" class="w-100">
+                                <%= data['params'].each do |param| %>
                                     <div class="d-flex f-row">
-                                        <input id="#{data.camelCased}-#{param}" type="text" class="w-100 m-1 d-flex f-row form-control" value="#{param}" />
-                                        <input id="#{data.camelCased}-#{param}-value" type="text" class="w-100 m-1 form-control" placeholder="Enter value" />
+                                        <input id="#{data['camelCased']}-#{param}" type="text" class="w-100 m-1 d-flex f-row form-control" value="#{param}" />
+                                        <input id="#{data['camelCased']}-#{param}-value" type="text" class="w-100 m-1 form-control" placeholder="Enter value" />
                                     </div>
                                 <% end %>
                             </form>
@@ -56,14 +56,14 @@
                     <% else %>
                         <span />
                     <% end %>
-                    <% if data.allowBody %>
+                    <% if data['allowBody'] %>
                         <div class="d-flex f-row w-100">
                             <h2 class="w-100.h6">Body:</h2>
-                            <button class="#{data.submitButtonColor} rounded mr-2" onclick="#{data.camelCased}NewBodyFile()">Add File</button>
-                            <button class="#{data.submitButtonColor} rounded-circle" onclick="#{data.camelCased}NewBody()">+</button>
+                            <button class="#{data['submitButtonColor']} rounded mr-2" onclick="#{data['camelCased']}NewBodyFile()">Add File</button>
+                            <button class="#{data['submitButtonColor']} rounded-circle" onclick="#{data['camelCased']}NewBody()">+</button>
                         </div>
                         <div class="d-flex f-row w-100">
-                            <form id="#{data.camelCased}BodyForm" class='w-100'>
+                            <form id="#{data['camelCased']}BodyForm" class='w-100'>
                                 <div class='d-flex f-row'>
                                     <input type='text' class='w-100 m-1 form-control' placeholder='Enter key'>
                                     <input type='text' class='w-100 m-1 form-control' placeholder='Enter value'>
@@ -75,19 +75,19 @@
                     <% end %>
                     <div class="d-flex f-row w-100">
                         <h2 class="w-100 h6">Querystrings: </h2>
-                        <button class="#{data.submitButtonColor} rounded-circle" onclick="#{data.camelCased}NewQS()">+</button>
+                        <button class="#{data['submitButtonColor']} rounded-circle" onclick="#{data['camelCased']}NewQS()">+</button>
                     </div>
                     <div class="d-flex f-row w-100">
-                        <form(id="#{data.camelCased}QSForm" class="w-100">
+                        <form(id="#{data['camelCased']}QSForm" class="w-100">
                             <div class="d-flex f-row">
                                 <input type="text" class="w-100 m-1 form-control" placeholder="Enter key">
                                 <input type="text" class="w-100 m-1 form-control" placeholder="Enter value">
                             </div>
                         </form>
                     </div>
-                    <% if data.allowBody %>
+                    <% if data['allowBody'] %>
                         <h2 class="h6">Body Data Type:</h2>
-                        <select id="#{data.camelCased}DataType" class='form-control'>
+                        <select id="#{data['camelCased']}DataType" class='form-control'>
                             <option(value=''></option>
                             <option(value='Raw Body'>Raw Body</option>
                             <option(value='Form Data'>Form Data</option>
@@ -96,7 +96,7 @@
                         <span />
                     <% end %>
                     <div class="w-100 mt-2">
-                        <button class="#{data.submitButtonColor} w-100" onclick="#{data.camelCased}()">Submit</button>
+                        <button class="#{data['submitButtonColor']} w-100" onclick="#{data['camelCased']}()">Submit</button>
                     </div>
             <div class="col-xs-12 col-sm-12-col-md-12 col-lg-6 col-xl-6 p-1 card-shadow p-1">
                 <div class="card-header">
@@ -104,7 +104,7 @@
                 </div>
                 <div class='card-body' style="max-height: 550px; overflow: auto;">
                     <code style="white-space: pre; overflow: auto; display: block;">
-                        <span id="#{data.camelCased}-results" />
+                        <span id="#{data['camelCased']}-results" />
                     </code>
                 </div>
             </div>

@@ -15,29 +15,30 @@
         <div class="card card-outline-secondary w-100 flex-respond-row card-shadow">
             <div class="col-xs-12 col-sm-12-col-md-12 col-lg-6 col-xl-6 p-1 card-shadow p-1">
                 <div class="card-header #{data.routeHeader}">
-                    <span class="mr-1">"#{data.method}:"></span>
-                    <span>"#{data.route}"</span>
+                    <span class="mr-1"><%= "#{data.method}:" %></span>
+                    <span value="#{data.route}:"></span>
                 </div>
-                <div class="card-body p-2 w-100" style="max-height: 550px; overflow: auto;")
+                <div class="card-body p-2 w-100" style="max-height: 550px; overflow: auto;">
                     <% if data.middleware.length > 0 %>
                         <h2 class="h5">Middleware Used:</h2>
                         <ul>
-                            <% data.middleware.each do |ware| %>
-                                <li class="h6">ware</li>
+                            <% data['middleware'].each do |ware| %>
+                                <li class="h6"><%= ware %></li>
                             <% end %>
                         </ul>
                     <% end %>
 
                     <h2 class="h5">Description:</h2>
                     <ul>
-                        <li class="h6">"#{data.description}"</li>
+                        <li class="h6"><%= "#{data.description}" %></li>
                     </ul>
                     <div class="d-flex f-row w-100">
                         <h2 class="w-100 h6">'Authorization Header'</h2>
                     </div>
-                    <div d-flex f-row w-100>
+                    <div class="d-flex f-row w-100">
                         <input id="#{data.camelCased}AuthorizationToken" type="text" class="w-100 m-1 form-control" placeholder="Enter token">
                     </div>
+
                     <% if data.allowParams %>
                         <div class="d-flex f-row w-100">
                             <h2 class="w-100 h6">Params:</h2>
@@ -58,8 +59,8 @@
                     <% if data.allowBody %>
                         <div class="d-flex f-row w-100">
                             <h2 class="w-100.h6">Body:</h2>
-                            <button(class="#{data.submitButtonColor} rounded mr-2" onclick="#{data.camelCased}NewBodyFile()">Add File</button>
-                            <button(class="#{data.submitButtonColor} rounded-circle" onclick="#{data.camelCased}NewBody()">+</button>
+                            <button class="#{data.submitButtonColor} rounded mr-2" onclick="#{data.camelCased}NewBodyFile()">Add File</button>
+                            <button class="#{data.submitButtonColor} rounded-circle" onclick="#{data.camelCased}NewBody()">+</button>
                         </div>
                         <div class="d-flex f-row w-100">
                             <form id="#{data.camelCased}BodyForm" class='w-100'>

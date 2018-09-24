@@ -74,6 +74,7 @@ class DocsController < ApplicationController
                     method: method, 
                     route: route, 
                     params: params,
+                    middleware: ['Not Available'],
                     routeHeader: routeHeader,
                     submitButtonColor: submitButtonColor,
                     camelCased: camelCased,

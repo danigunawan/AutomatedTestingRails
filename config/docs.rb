@@ -1,4 +1,5 @@
 path = __dir__ + '/routes.rb'
+outpath = __dir__ + '/../app/assets/javascripts/docs.js'
 textArray = []
 File.open(path).each_line do |line|
     textArray.push(line)
@@ -41,7 +42,6 @@ var allData = {
     method: '#{route[:method]}',
     route: '#{route[:route]}',
 };
-var formData = new FormData();
 var paramList = document.getElementById('#{camelCased}ParamsForm') && document.getElementById('#{camelCased}ParamsForm').elements ? document.getElementById('#{camelCased}ParamsForm').elements : [];
 
 var csrfToken = document.querySelector('meta[name=\"csrf-token\"]').getAttribute('content');
@@ -169,4 +169,8 @@ var ele = document.getElementById('#{camelCased}QSForm');
 ele.innerHTML += '<div class=\"d-flex f-row\"><input class=\"w-100 m-1 form-control\" type=\"text\" placeholder=\"Enter key\"><input class=\"w-100 m-1 form-control\" type=\"text\" placeholder=\"Enter value\"></div>';
 };
 "
+end
+
+File.open(outpath, "w+") do |f|
+    f.write(javascriptString)
 end

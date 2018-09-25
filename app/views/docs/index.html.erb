@@ -17,7 +17,7 @@
                 <div class='card-header <%= "#{data[:routeHeader]}" %>'>
                     <span class="mr-1"><%= data[:method] %>:</span>
                     <span><%= data[:route] %></span>
-                <div>
+                </div>
                 <div class="card-body p-2 w-100" style="max-height: 550px; overflow: auto;">
                     <% if data[:middleware] && data[:middleware].length > 0 %>
                         <h2 class="h5">Middleware Used:</h2>
@@ -101,15 +101,15 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-1 card-shadow p-1">
-            <div class="card-header">
-                <h2 class="h5">Sample Data</h2>
-            </div>
-            <div class='card-body' style="max-height: 550px; overflow: auto;">
-                <code style="white-space: pre; overflow: auto; display: block;">
-                    <span id="<%= "#{data[:camelCased]}-results" %>"></span>
-                </code>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 p-1 card-shadow p-1">
+                <div class="card-header">
+                    <h2 class="h5">Sample Data</h2>
+                </div>
+                <div class='card-body' style="max-height: 550px; overflow: auto;">
+                    <code style="white-space: pre; overflow: auto; display: block;">
+                        <span id="<%= "#{data[:camelCased]}-results" %>"></span>
+                    </code>
+                </div>
             </div>
         </div>
     <% end %>

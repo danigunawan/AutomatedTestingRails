@@ -248,17 +248,17 @@ window.getDocsNewQS = function() {
 var ele = document.getElementById('getDocsQSForm');
 ele.innerHTML += '<div class="d-flex f-row"><input class="w-100 m-1 form-control" type="text" placeholder="Enter key"><input class="w-100 m-1 form-control" type="text" placeholder="Enter value"></div>';
 };
-window.getApiV1UserIParam = function() {
+window.getApiV1UserIdParam = function() {
 var allData = {
     method: 'GET',
     route: '/api/v1/user/:id',
 };
-var paramList = document.getElementById('getApiV1UserIParamParamsForm') && document.getElementById('getApiV1UserIParamParamsForm').elements ? document.getElementById('getApiV1UserIParamParamsForm').elements : [];
+var paramList = document.getElementById('getApiV1UserIdParamParamsForm') && document.getElementById('getApiV1UserIdParamParamsForm').elements ? document.getElementById('getApiV1UserIdParamParamsForm').elements : [];
 
 var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 var csrfHeader = { headers: { 'X-CSRF-Token': null } };
 csrfHeader.headers['X-CSRF-Token'] = csrfToken;
-var jsonWebToken = document.getElementById('getApiV1UserIParamAuthorizationToken');
+var jsonWebToken = document.getElementById('getApiV1UserIdParamAuthorizationToken');
 if (jsonWebToken && jsonWebToken.value) csrfHeader.headers['Authorization'] = jsonWebToken.value;
 
 var paramObject = {};
@@ -276,11 +276,11 @@ if (i % 2 !== 0) {
 var routeName = allData.route.split('/').map(e => paramObject[e] ? paramObject[e] : e).join('/');
 
 if (allData.method !== 'GET' || allData.method !== 'DELETE') {
-var bodyDataType = document.getElementById('getApiV1UserIParamDataType') && document.getElementById('getApiV1UserIParamDataType').value ? document.getElementById('getApiV1UserIParamDataType').value : false;
+var bodyDataType = document.getElementById('getApiV1UserIdParamDataType') && document.getElementById('getApiV1UserIdParamDataType').value ? document.getElementById('getApiV1UserIdParamDataType').value : false;
 var formBoolean = bodyDataType === 'Form Data';
 
 var bodyElements = [];
-var bodyRawElements = document.getElementById('getApiV1UserIParamBodyForm') && document.getElementById('getApiV1UserIParamBodyForm').elements ? document.getElementById('getApiV1UserIParamBodyForm').elements : [];
+var bodyRawElements = document.getElementById('getApiV1UserIdParamBodyForm') && document.getElementById('getApiV1UserIdParamBodyForm').elements ? document.getElementById('getApiV1UserIdParamBodyForm').elements : [];
 for (var i = 0; i < bodyRawElements.length; i++) {
     var eleParam = bodyRawElements[i].value || null;
     bodyElements.push(eleParam);
@@ -311,7 +311,7 @@ bodyElements.forEach((e, i) => {
 }
 
 var qsElements = [];
-var qsRawElements = document.getElementById('getApiV1UserIParamQSForm') && document.getElementById('getApiV1UserIParamQSForm').elements ? document.getElementById('getApiV1UserIParamQSForm').elements : [];
+var qsRawElements = document.getElementById('getApiV1UserIdParamQSForm') && document.getElementById('getApiV1UserIdParamQSForm').elements ? document.getElementById('getApiV1UserIdParamQSForm').elements : [];
 for (var i = 0; i < qsRawElements.length; i++) {
 var eleParam = qsRawElements[i].value || null;
 qsElements.push(eleParam);
@@ -345,7 +345,7 @@ for (var qs in qsObject) {
 }
 
 var args = allData.method === 'GET' || allData.method === 'DELETE' ? [routeName + querystring, csrfHeader] : [routeName + querystring, bodyObject, csrfHeader];
-var resultElement = document.getElementById('getApiV1UserIParam-results');
+var resultElement = document.getElementById('getApiV1UserIdParam-results');
 
 axios[allData.method.toLowerCase()](...args)
 .then((resp) => {
@@ -359,17 +359,17 @@ axios[allData.method.toLowerCase()](...args)
     resultElement.innerText = JSON.stringify(err.data, null, 4);
 });
 };
-window.getApiV1UserIParamNewBody = function() {
-var ele = document.getElementById('getApiV1UserIParamBodyForm');
+window.getApiV1UserIdParamNewBody = function() {
+var ele = document.getElementById('getApiV1UserIdParamBodyForm');
 ele.innerHTML += '<div class="d-flex f-row"><input class="w-100 m-1 form-control" type="text" placeholder="Enter key"><input class="w-100 m-1 form-control" type="text" placeholder="Enter value"></div>';
 };
 
-window.getApiV1UserIParamNewBodyFile = function() {
-var ele = document.getElementById('getApiV1UserIParamBodyForm');
+window.getApiV1UserIdParamNewBodyFile = function() {
+var ele = document.getElementById('getApiV1UserIdParamBodyForm');
 ele.innerHTML += '<div class="d-flex f-row"><input class="w-100 m-1 form-control" type="text" placeholder="Enter key"><input class="w-100 m-1 form-control" type="file" placeholder="Enter value"></div>';
 };
 
-window.getApiV1UserIParamNewQS = function() {
-var ele = document.getElementById('getApiV1UserIParamQSForm');
+window.getApiV1UserIdParamNewQS = function() {
+var ele = document.getElementById('getApiV1UserIdParamQSForm');
 ele.innerHTML += '<div class="d-flex f-row"><input class="w-100 m-1 form-control" type="text" placeholder="Enter key"><input class="w-100 m-1 form-control" type="text" placeholder="Enter value"></div>';
 };

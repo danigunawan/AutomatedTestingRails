@@ -30,8 +30,8 @@ allRoutes.each do |route|
     tempRoute.split('/').each do |line|
         cap = line[0]
         if cap == ':'
-            temp = line.slice(1)
-            camelCased += temp.capitalize + 'Param'
+            line[0] = ''
+            camelCased += line.capitalize + 'Param'
         else
             camelCased += line.capitalize       
         end

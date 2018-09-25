@@ -35,9 +35,9 @@ class DocsController < ApplicationController
                 tempRoute.split('/').each do |l|
                     cap = l[0]
                     if cap == ':'
-                        temp = l.slice(1)
-                        params.push(temp)
-                        camelCased += temp.capitalize + 'Param'
+                        l[0] = ''
+                        params.push(l)
+                        camelCased += l.capitalize + 'Param'
                     else
                         camelCased += l.capitalize       
                     end
@@ -48,24 +48,16 @@ class DocsController < ApplicationController
                 if method == 'GET'
                     routeHeader = 'bg-success text-white'
                     submitButtonColor = 'btn btn-outline-success'
-                end
-
-                if method == 'POST'
+                elsif method == 'POST'
                     routeHeader = 'bg-info text-white'
                     submitButtonColor = 'btn btn-outline-info'
-                end
-
-                if method == 'PATCH'
+                elsif method == 'PATCH'
                     routeHeader = 'bg-warning text-white'
                     submitButtonColor = 'btn btn-outline-warning'
-                end
-
-                if method == 'PUT'
+                elsif method == 'PUT'
                     routeHeader = 'bg-warning text-white'
                     submitButtonColor = 'btn btn-outline-warning'
-                end
-
-                if method == 'DELETE'
+                elsif method == 'DELETE'
                     routeHeader = 'bg-danger text-white'
                     submitButtonColor = 'btn btn-outline-danger'
                 end

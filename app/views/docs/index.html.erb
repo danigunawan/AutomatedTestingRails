@@ -34,7 +34,7 @@
                         </ul>
                     </h2>
                     <div class="d-flex f-row w-100">
-                        <h2 class="w-100 h6">'Authorization Header'</h2>
+                        <h2 class="w-100 h6">Authorization Header</h2>
                     </div>
                     <div class="d-flex f-row w-100">
                         <input id="<%= "#{data[:camelCased]}AuthorizationToken" %>" type="text" class="w-100 m-1 form-control" placeholder="Enter token">
@@ -48,8 +48,8 @@
                             <form id='<%= "#{data[:camelCased]}ParamsForm" %>' class="w-100">
                                 <%= data[:params].each do |param| %>
                                     <div class="d-flex f-row">
-                                        <input id="<%= "#{data[:camelCased]}-#{param}" %>" type="text" class="w-100 m-1 d-flex f-row form-control" value="<%= "#{param}" %>"/>
-                                        <input id="<%= "#{data[:camelCased]}-#{param}-value" %>" type="text" class="w-100 m-1 form-control" placeholder="Enter value" />
+                                        <input id="<%= "#{data[:camelCased]}-#{param}" %>" type="text" class="w-100 m-1 d-flex f-row form-control" value="<%= "#{param}" %>">
+                                        <input id="<%= "#{data[:camelCased]}-#{param}-value" %>" type="text" class="w-100 m-1 form-control" placeholder="Enter value">
                                     </div>
                                 <% end %>
                             </form>
